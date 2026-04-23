@@ -79,42 +79,105 @@
 // }
 
 
-const people = [
-  { name: "Alice", city: "NYC" },
-  { name: "Bob", city: "LA" },
-  { name: "Charlie", city: "NYC" },
-  { name: "Diana", city: "LA" },
-  { name: "Eve", city: "Chicago" },
+// const people = [
+//   { name: "Alice", city: "NYC" },
+//   { name: "Bob", city: "LA" },
+//   { name: "Charlie", city: "NYC" },
+//   { name: "Diana", city: "LA" },
+//   { name: "Eve", city: "Chicago" },
+// ];
+
+
+// function group(ppl, key){
+//     return (ppl || []).reduce((acc, val) => {
+//         const grpKey = val[key];
+//         return {
+//             ...acc,
+//            [grpKey]: [...(acc[grpKey] || []), val] 
+//         }
+//     }, {})
+// }
+
+// function group(arr, key){
+//     return (arr ?? []).reduce((acc, val) => {
+//         return{
+//             ...acc,
+//             [val[key]]: [...acc[val[key]] ?? [], val] 
+//         }
+//     }, {})
+// }
+
+// console.log(group(people, "city"));
+
+// let nums = [1, [2, 3], [4, [5, [6, 7]]], 8];
+
+// function flatArr(arr){
+//     let flattened = [];
+//     for(let i = 0; i < arr.length; i++){
+//         if(Array.isArray(arr[i])){
+//             flattened = flattened.concat(flatArr(arr[i]))
+//         }else{
+//             flattened.push(arr[i])
+//         }
+//     }
+//     return flattened
+// }
+
+// console.log(flatArr(nums));
+
+
+
+// const map = new Map([['a', 1], ['b', 2], ['c', 3]]);
+
+// let match = null;
+// let wantedValue = 2
+
+// for(const [_, value] of map){
+//     if(value === 2){
+//         match = value
+//         break;
+//     }
+// }
+// console.log(match)
+
+
+const arr = ["one piece", "two", "three"];
+
+function validateCom(input= ""){
+    const valid = arr.find(com => com === input);
+    if(!valid){
+        console.log('Invalid command. Use "-help" to see valid commands.');
+        return;
+    }
+    return true;
+}
+
+
+function someWrd(input){
+    if(!validateCom(input)){
+        return;
+    }
+    console.log(input);
+    console.log(true);
+}
+
+someWrd("one piece")
+
+
+const cars = [
+  { brand: "Audi" ,model: "R8", year: "2018", color: "Black" },
+  { brand: "BMW" ,model: "E60 M5", year: "2009", color: "Black" },
+  { brand: "Audi" ,model: "B5 S4", year: "2000", color: "Maroon" },
+  { brand: "Honda" , model: "Civic EJ1", year: "1992", color: "Orange" },
+  { brand: "Audi" ,model: "C7 RS4", year: "2007", color: "Royal Blue" },
 ];
 
-
-function group(ppl, key){
-    return (ppl || []).reduce((acc, val) => {
-        const grpKey = val[key];
+function grpCars(arr, key){
+    return (arr ?? []).reduce((acc, val) => {
         return {
             ...acc,
-           [grpKey]: [...(acc[grpKey] || []), val] 
-        }
-    }, {})
+            [val[key]]: [...(acc[val[key]] ?? []), val],
+        };
+    }, {});
 }
-
-console.log(group(people, "city"));
-
-let nums = [1, [2, 3], [4, [5, [6, 7]]], 8];
-
-function flatArr(arr){
-    let flattened = [];
-    for(let i = 0; i < arr.length; i++){
-        if(Array.isArray(arr[i])){
-            flattened = flattened.concat(flatArr(arr[i]))
-        }else{
-            flattened.push(arr[i])
-        }
-    }
-    return flattened
-}
-
-console.log(flatArr(nums));
-
-
-
+console.log(JSON.stringify(grpCars(cars, "color"), null, 2))
