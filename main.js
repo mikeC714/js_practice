@@ -141,43 +141,97 @@
 // console.log(match)
 
 
-const arr = ["one piece", "two", "three"];
+// const arr = ["one piece", "two", "three"];
 
-function validateCom(input= ""){
-    const valid = arr.find(com => com === input);
-    if(!valid){
-        console.log('Invalid command. Use "-help" to see valid commands.');
-        return;
+// function validateCom(input= ""){
+//     const valid = arr.find(com => com === input);
+//     if(!valid){
+//         console.log('Invalid command. Use "-help" to see valid commands.');
+//         return;
+//     }
+//     return true;
+// }
+
+
+// function someWrd(input){
+//     if(!validateCom(input)){
+//         return;
+//     }
+//     console.log(input);
+//     console.log(true);
+// }
+
+// someWrd("one piece")
+
+
+// const cars = [
+//   { brand: "Audi" ,model: "R8", year: "2018", color: "Black" },
+//   { brand: "BMW" ,model: "E60 M5", year: "2009", color: "Black" },
+//   { brand: "Audi" ,model: "B5 S4", year: "2000", color: "Maroon" },
+//   { brand: "Honda" , model: "Civic EJ1", year: "1992", color: "Orange" },
+//   { brand: "Audi" ,model: "C7 RS4", year: "2007", color: "Royal Blue" },
+// ];
+
+// function grpCars(arr, key){
+//     return (arr ?? []).reduce((acc, val) => {
+//         return {
+//             ...acc,
+//             [val[key]]: [...(acc[val[key]] ?? []), val],
+//         };
+//     }, {});
+// }
+// console.log(JSON.stringify(grpCars(cars, "color"), null, 2))
+
+
+
+
+// const arr = [1,2,3,4,5];
+
+// function timesTwo(arr= []){
+//    return arr.reduce((acc, val) => {
+//         acc.push(val * 2);
+//         return acc
+//    }, [])
+// }
+
+// function timesThree(arr){
+//     return arr.map(num => num *3)
+// }
+
+// function timesFour(arr){
+//     const newArr = [];
+//     arr.forEach((num) => {
+//         newArr.push(num *4);
+//     })
+//     return newArr;
+// }
+
+// console.log(timesTwo(arr));
+// console.log(timesThree(arr));
+// console.log(timesFour(arr))
+
+
+
+
+class Car{
+    constructor(brand, model, year){
+        brand = brand; 
+        model = model; 
+        year = year;
     }
-    return true;
-}
 
-
-function someWrd(input){
-    if(!validateCom(input)){
-        return;
+    newCar(){
+        const car = `${this.brand} ${this.model}, ${this.year}`
+        console.log(car);
     }
-    console.log(input);
-    console.log(true);
 }
 
-someWrd("one piece")
 
+function wrds({  }){
+    console.log(`${wrd1}`)
+    console.log(`${wrd2}`)
+    console.log(`${wrd3}`)
+    console.log(`${wrd4}`)
+};
 
-const cars = [
-  { brand: "Audi" ,model: "R8", year: "2018", color: "Black" },
-  { brand: "BMW" ,model: "E60 M5", year: "2009", color: "Black" },
-  { brand: "Audi" ,model: "B5 S4", year: "2000", color: "Maroon" },
-  { brand: "Honda" , model: "Civic EJ1", year: "1992", color: "Orange" },
-  { brand: "Audi" ,model: "C7 RS4", year: "2007", color: "Royal Blue" },
-];
-
-function grpCars(arr, key){
-    return (arr ?? []).reduce((acc, val) => {
-        return {
-            ...acc,
-            [val[key]]: [...(acc[val[key]] ?? []), val],
-        };
-    }, {});
-}
-console.log(JSON.stringify(grpCars(cars, "color"), null, 2))
+wrds({});
