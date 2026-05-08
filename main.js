@@ -213,25 +213,35 @@
 
 
 
-class Car{
-    constructor(brand, model, year){
-        brand = brand; 
-        model = model; 
-        year = year;
-    }
+// class Car{
+//     constructor(brand, model, year){
+//         brand = brand; 
+//         model = model; 
+//         year = year;
+//     }
 
-    newCar(){
-        const car = `${this.brand} ${this.model}, ${this.year}`
-        console.log(car);
-    }
+//     newCar(){
+//         const car = `${this.brand} ${this.model}, ${this.year}`
+//         console.log(car);
+//     }
+// }
+
+
+// function wrds({  }){
+//     console.log(`${wrd1}`)
+//     console.log(`${wrd2}`)
+//     console.log(`${wrd3}`)
+//     console.log(`${wrd4}`)
+// };
+
+// wrds({});
+
+
+let boo = false;
+
+function call(){
+    boo = true
 }
 
-
-function wrds({  }){
-    console.log(`${wrd1}`)
-    console.log(`${wrd2}`)
-    console.log(`${wrd3}`)
-    console.log(`${wrd4}`)
-};
-
-wrds({});
+call(boo);
+console.log(boo)
