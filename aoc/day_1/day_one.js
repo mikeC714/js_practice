@@ -44,58 +44,50 @@
         ** the height will be used to set constraints 
 // */
 
+const fs = require("node:fs")
+const INPUT = fs.readFileSync("./input.txt", "utf-8").split("");
+const res = INPUT.reduce((flr, dir) => dir === "(" ? ++flr : --flr, 0);
 
-function inst(input){
-    let flr = 0; 
-
-    input.split("(").length - input.split(")").length;
-    input.split("")
-        .findIndex(char => {
-            flr += char === "(" ? 1 : -1;
-            return flr < 0;
-        }) +1
-    console.log("flr:", flr)
-}
-inst("()()()(()(((((((((())))))()()((())))(((((")
+console.log(typeof(res));
+console.log(res)
 
 
+// function map(u, d){
 
-function map(u, d){
+//     const directions = [];
+//     const up = "(";
+//     const down = ")";
 
-    const directions = [];
-    const up = "(";
-    const down = ")";
+//     for(i = 0; i < u; i++) directions.push(up);
+//     for(x = 0; x < d; x++) directions.push(down);
 
-    for(i = 0; i < u; i++) directions.push(up);
-    for(x = 0; x < d; x++) directions.push(down);
+//     for(let m = directions.length - 1; m > 0; m--){
+//         const j = Math.ceil(Math.random() * (m-1));
+//         [directions[m], directions[j]] = [directions[j], directions[m]];
+//     }
 
-    for(let m = directions.length - 1; m > 0; m--){
-        const j = Math.ceil(Math.random() * (m-1));
-        [directions[m], directions[j]] = [directions[j], directions[m]];
-    }
+//     return directions
+// }
 
-    return directions
-}
+// function stairCase(up, down){
 
-function stairCase(up, down){
+//     console.log({ up: up, down: down });
 
-    console.log({ up: up, down: down });
+//     const directions = map(up, down);
+//     console.log(directions)
 
-    const directions = map(up, down);
-    console.log(directions)
+//     let level = 0;
 
-    let level = 0;
+//     for(const char of directions){
+//        level += char === "(" ? 1 : -1 
+//     }    
+//     if(level === 0){
+//         console.log(`Santa is still on the lobby floor.`);
+//     }else if(level < 0){
+//         console.log(`Santa is currently on Basement Level ${level}`);
+//     }else{
+//         console.log(`Santa is currently on Floor ${level}`);
+//     }
+// }
 
-    for(const char of directions){
-       level += char === "(" ? 1 : -1 
-    }    
-    if(level === 0){
-        console.log(`Santa is still on the lobby floor.`);
-    }else if(level < 0){
-        console.log(`Santa is currently on Basement Level ${level}`);
-    }else{
-        console.log(`Santa is currently on Floor ${level}`);
-    }
-}
-
-stairCase(20, 10);
+// stairCase(20, 10);
