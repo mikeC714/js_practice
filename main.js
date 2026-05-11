@@ -237,11 +237,13 @@
 // wrds({});
 
 
-let boo = false;
+// let boo = false;
 
-function call(){
-    boo = true
-}
+// function call(){
+//     boo = true
+// }
 
-call(boo);
-console.log(boo)
+// call(boo);
+// console.log(boo)
+
+
