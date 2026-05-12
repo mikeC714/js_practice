@@ -3,13 +3,12 @@
 
 const arr = [1, [2, [3, [4]], 5]];
 
-
-function recursize(arr){
+function recursive(arr){
     const newArr = [];
 
     arr.forEach(a => {
         if(Array.isArray(a)){
-            newArr.push(...recursize(a))
+            newArr.push(...recursive(a))
         }else{
             newArr.push(a)
         }
@@ -17,4 +16,4 @@ function recursize(arr){
     return newArr;
 }
 
-console.log(recursize(arr))
+console.log(recursive(arr))
