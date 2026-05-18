@@ -246,4 +246,8 @@
 // call(boo);
 // console.log(boo)
 
+const arr = [1,2,3,4,5];
 
+const newArr = arr.sort((a,b) => b-a);
+
+console.log(newArr);
