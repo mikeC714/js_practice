@@ -1,3 +1,7 @@
+const fs = require("node:fs");
+const path = require("path");
+const process = require("node:process");
+
 // const transactions = [
 //   { category: "food", amount: 10, details: [{ amount: 5 }, { amount: 3 }] },
 //   { category: "travel", amount: 100, details: [{ amount: 50 }] },
@@ -246,8 +250,102 @@
 // call(boo);
 // console.log(boo)
 
-const arr = [1,2,3,4,5];
 
-const newArr = arr.sort((a,b) => b-a);
+// class HomePage{
+//     #state = {};
+//     constructor(){
+//         this.header = document.createElement('header');
+//         this.body = document.createElement('body');
+//         this.footer = document.createElement('footer');
+//         this.display = document.createElement('p');
+//     }
 
-console.log(newArr);
+//     monitorState(initialValue){
+//         this.#state = initialValue;
+
+//         const setter = (newValue) => {
+//             this.#state = { ...this.#state, ...newValue };
+//             this.#render();
+//             return this.#state;        
+//         }
+
+//         const getter = () => this.#state;
+
+//         return [getter, setter];
+//     }
+
+//     #render(){
+//         return this.display.textContent = JSON.stringify(this.#state);
+//     }
+// }
+
+
+// const arr = [{id:1, status: "completed", created_at: 2}, {id:2, status: "approved", created_at: 1}, {id:3, status: "pending", created_at: 5}, {id:4, status: "approved", created_at: 10}, {id:5, status: "approved", created_at: 20}];
+
+// function monitor(arr){
+//     const filtered = arr.filter((el) => {
+//         if(el.status === "approved" && el.created_at > 7){
+//             return el.status = "unpaid"; 
+//         }
+//     })
+//     console.log(filtered);
+// }
+
+// monitor(arr);
+
+
+async function createDir(){
+    let status;
+    try{
+        const absolute = path.join(__dirname);
+        await fs.promises.mkdir(absolute, { recursive: true });
+        status = "SUCCESS"
+        return absolute;
+    }catch(err){
+        status = "FAILED";
+        throw new Error(err.message);
+    }finally{
+        console.log(`${status}, Attempt to create dir complete.`)
+    }
+}
+
+function getAllDirs(dir){
+    const entries = fs.readdirSync(dir, { encoding: 'utf8', withFileTypes: true });
+    const dirs = [];
+
+    for(const entry of entries){
+        if(entry.isDirectory()){
+            const fullPath = path.join(dir, entry.name);
+            dirs.push(fullPath);
+            const nested = getAllDirs(fullPath);
+            dirs.push(...nested);
+        }
+    }
+
+    return `${dirs}`;
+}
+
+
+(async function writeDir(){
+    const dir = await createDir();
+    try{
+        await fs.promises.writeFile(path.join(dir, 'test.txt'), getAllDirs(dir));
+    }catch(err){
+        throw new Error(err.message);
+    }finally{
+        console.log(`Attempt to write file in ${dir} is complete.`);
+    }
+})()
+
+
+
+
+
+
+
+const arr = [{id:1,  name: "Joe"},{id:2,  name: "Smith"},{id:3,  name: "Thomas"},{id: 4, name: "Steve"}];
+
+const users = arr.map(usr =>  usr.id)
+
+
+console.log(users);
