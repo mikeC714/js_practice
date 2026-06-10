@@ -10,10 +10,12 @@ const rl = readline.createInterface({
 
 const client = net.createConnection({port: 3000}, async () => {
 	let userID = await rl.question("Enter UserID.");
+	client.write(JSON.stringify({ type:"CONNECTION", userID }));
 	client.write(JSON.stringify({ type:"AUTH", userID }));
 	let to = await rl.question("Who'd you like to chat with?");
 	client.write(JSON.stringify({ type:"CHAT", to }));
 	console.clear();	
+
 	rl.on('line', (input) => {
 			if(input === "exit"){
 				setTimeout(() => {

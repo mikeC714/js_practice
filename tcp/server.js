@@ -9,6 +9,9 @@ const server = net.createServer((socket) => {
 	socket.on('data', (chunk) => {
 		const data = JSON.parse(chunk.toString());
 		switch (data.type){
+			case("CONNECTION"):
+				console.log(`${data.userID} has connnected to server`);	
+			break;
 			case("AUTH"): 
 				USERS.set(data.userID, socket)
 			break;
