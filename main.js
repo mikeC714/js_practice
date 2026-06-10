@@ -293,6 +293,7 @@ const process = require("node:process");
 
 // monitor(arr);
 
+<<<<<<< HEAD
 //
 // async function createDir(){
 //     let status;
@@ -360,3 +361,61 @@ const three = [one, two];
 if(three.some(val => val === true)){ console.log("Something is true");}else{console.log("Both false")}
 
 
+=======
+
+async function createDir(){
+    let status;
+    try{
+        const absolute = path.join(__dirname);
+        await fs.promises.mkdir(absolute, { recursive: true });
+        status = "SUCCESS"
+        return absolute;
+    }catch(err){
+        status = "FAILED";
+        throw new Error(err.message);
+    }finally{
+        console.log(`${status}, Attempt to create dir complete.`)
+    }
+}
+
+function getAllDirs(dir){
+    const entries = fs.readdirSync(dir, { encoding: 'utf8', withFileTypes: true });
+    const dirs = [];
+
+    for(const entry of entries){
+        if(entry.isDirectory()){
+            const fullPath = path.join(dir, entry.name);
+            dirs.push(fullPath);
+            const nested = getAllDirs(fullPath);
+            dirs.push(...nested);
+        }
+    }
+
+    return `${dirs}`;
+}
+
+
+(async function writeDir(){
+    const dir = await createDir();
+    try{
+        await fs.promises.writeFile(path.join(dir, 'test.txt'), getAllDirs(dir));
+    }catch(err){
+        throw new Error(err.message);
+    }finally{
+        console.log(`Attempt to write file in ${dir} is complete.`);
+    }
+})()
+
+
+
+
+
+
+
+const arr = [{id:1,  name: "Joe"},{id:2,  name: "Smith"},{id:3,  name: "Thomas"},{id: 4, name: "Steve"}];
+
+const users = arr.map(usr =>  usr.id)
+
+
+console.log(users);
+>>>>>>> 4518af3f22323565f5324a2040401cf00ffe9abb

@@ -3,6 +3,7 @@ const crypto = require("crypto");
 
 
 for(i = 0; i < Infinity; i++){
+<<<<<<< HEAD
 	const str = "ckczppom"
 	const newStr = str.concat(i);
     const hash = crypto.createHash('md5').update(newStr).digest('hex')
@@ -14,4 +15,17 @@ for(i = 0; i < Infinity; i++){
 		console.log("FOUND");
         break
     }
+=======
+    const str = "ckczppom"
+    const hash = crypto.createHash('md5').update("ckczppom").digest('hex')
+    const newStr = str.concat(i);
+
+    console.log(hash)
+
+    if(hash.toString().slice(0,5) === "00000"){
+        console.log(newStr);
+        break
+    }
+
+>>>>>>> 4518af3f22323565f5324a2040401cf00ffe9abb
 }
