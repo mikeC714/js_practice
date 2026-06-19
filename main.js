@@ -1,4 +1,5 @@
 const fs = require("node:fs");
+const { Buffer } = require("node:buffer");
 const path = require("path");
 const process = require("node:process");
 
@@ -224,76 +225,142 @@ const process = require("node:process");
 //         year = year;
 //     }
 
-//     newCar(){
-//         const car = `${this.brand} ${this.model}, ${this.year}`
-//         console.log(car);
-//     }
-// }
-
-
-// function wrds({  }){
-//     console.log(`${wrd1}`)
-//     console.log(`${wrd2}`)
-//     console.log(`${wrd3}`)
-//     console.log(`${wrd4}`)
-// };
-
-// wrds({});
-
-
-// let boo = false;
-
-// function call(){
-//     boo = true
-// }
-
-// call(boo);
-// console.log(boo)
-
-
-// class HomePage{
-//     #state = {};
-//     constructor(){
-//         this.header = document.createElement('header');
-//         this.body = document.createElement('body');
-//         this.footer = document.createElement('footer');
-//         this.display = document.createElement('p');
-//     }
-
-//     monitorState(initialValue){
-//         this.#state = initialValue;
-
-//         const setter = (newValue) => {
-//             this.#state = { ...this.#state, ...newValue };
-//             this.#render();
-//             return this.#state;        
-//         }
-
-//         const getter = () => this.#state;
-
-//         return [getter, setter];
-//     }
-
-//     #render(){
-//         return this.display.textContent = JSON.stringify(this.#state);
-//     }
-// }
-
-
-// const arr = [{id:1, status: "completed", created_at: 2}, {id:2, status: "approved", created_at: 1}, {id:3, status: "pending", created_at: 5}, {id:4, status: "approved", created_at: 10}, {id:5, status: "approved", created_at: 20}];
-
-// function monitor(arr){
-//     const filtered = arr.filter((el) => {
-//         if(el.status === "approved" && el.created_at > 7){
-//             return el.status = "unpaid"; 
-//         }
-//     })
-//     console.log(filtered);
-// }
-
-// monitor(arr);
-
-<<<<<<< HEAD
+// //     newCar(){
+// //         const car = `${this.brand} ${this.model}, ${this.year}`
+// //         console.log(car);
+// //     }
+// // }
+//
+//
+// // function wrds({  }){
+// //     console.log(`${wrd1}`)
+// //     console.log(`${wrd2}`)
+// //     console.log(`${wrd3}`)
+// //     console.log(`${wrd4}`)
+// // };
+//
+// // wrds({});
+//
+//
+// // let boo = false;
+//
+// // function call(){
+// //     boo = true
+// // }
+//
+// // call(boo);
+// // console.log(boo)
+//
+//
+// // class HomePage{
+// //     #state = {};
+// //     constructor(){
+// //         this.header = document.createElement('header');
+// //         this.body = document.createElement('body');
+// //         this.footer = document.createElement('footer');
+// //         this.display = document.createElement('p');
+// //     }
+//
+// //     monitorState(initialValue){
+// //         this.#state = initialValue;
+//
+// //         const setter = (newValue) => {
+// //             this.#state = { ...this.#state, ...newValue };
+// //             this.#render();
+// //             return this.#state;        
+// //         }
+//
+// //         const getter = () => this.#state;
+//
+// //         return [getter, setter];
+// //     }
+//
+// //     #render(){
+// //         return this.display.textContent = JSON.stringify(this.#state);
+// //     }
+// // }
+//
+//
+// // const arr = [{id:1, status: "completed", created_at: 2}, {id:2, status: "approved", created_at: 1}, {id:3, status: "pending", created_at: 5}, {id:4, status: "approved", created_at: 10}, {id:5, status: "approved", created_at: 20}];
+//
+// // function monitor(arr){
+// //     const filtered = arr.filter((el) => {
+// //         if(el.status === "approved" && el.created_at > 7){
+// //             return el.status = "unpaid"; 
+// //         }
+// //     })
+// //     console.log(filtered);
+// // }
+//
+// // monitor(arr);
+//
+// //
+// // async function createDir(){
+// //     let status;
+// //     try{
+// //         const absolute = path.join(__dirname);
+// //         await fs.promises.mkdir(absolute, { recursive: true });
+// //         status = "SUCCESS"
+// //         return absolute;
+// //     }catch(err){
+// //         status = "FAILED";
+// //         throw new Error(err.message);
+// //     }finally{
+// //         console.log(`${status}, Attempt to create dir complete.`)
+// //     }
+// // }
+// //
+// // function getAllDirs(dir){
+// //     const entries = fs.readdirSync(dir, { encoding: 'utf8', withFileTypes: true });
+// //     const dirs = [];
+// //
+// //     for(const entry of entries){
+// //         if(entry.isDirectory()){
+// //             const fullPath = path.join(dir, entry.name);
+// //             dirs.push(fullPath);
+// //             const nested = getAllDirs(fullPath);
+// //             dirs.push(...nested);
+// //         }
+// //     }
+// //
+// //     return `${dirs}`;
+// // }
+// //
+// //
+// // (async function writeDir(){
+// //     const dir = await createDir();
+// //     try{
+// //         await fs.promises.writeFile(path.join(dir, 'test.txt'), getAllDirs(dir));
+// //     }catch(err){
+// //         throw new Error(err.message);
+// //     }finally{
+// //         console.log(`Attempt to write file in ${dir} is complete.`);
+// //     }
+// // })()
+// //
+// //
+// //
+// //
+// //
+// //
+// //
+// // const arr = [{id:1,  name: "Joe"},{id:2,  name: "Smith"},{id:3,  name: "Thomas"},{id: 4, name: "Steve"}];
+// //
+// // const users = arr.map(usr =>  usr.id)
+// //
+// //
+// // console.log(users);
+// //
+//
+//
+// const one = false;
+// const two = false;
+//
+// const three = [one, two];
+//
+// if(three.some(val => val === true)){ console.log("Something is true");}else{console.log("Both false")}
+//
+//
 //
 // async function createDir(){
 //     let status;
@@ -307,8 +374,7 @@ const process = require("node:process");
 //         throw new Error(err.message);
 //     }finally{
 //         console.log(`${status}, Attempt to create dir complete.`)
-//     }
-// }
+//     } }
 //
 // function getAllDirs(dir){
 //     const entries = fs.readdirSync(dir, { encoding: 'utf8', withFileTypes: true });
@@ -353,69 +419,69 @@ const process = require("node:process");
 //
 
 
-const one = false;
-const two = false;
-
-const three = [one, two];
-
-if(three.some(val => val === true)){ console.log("Something is true");}else{console.log("Both false")}
 
 
-=======
 
-async function createDir(){
-    let status;
-    try{
-        const absolute = path.join(__dirname);
-        await fs.promises.mkdir(absolute, { recursive: true });
-        status = "SUCCESS"
-        return absolute;
-    }catch(err){
-        status = "FAILED";
-        throw new Error(err.message);
-    }finally{
-        console.log(`${status}, Attempt to create dir complete.`)
-    }
+// const str = "Hello World!";
+// const uStr = Buffer.from(str, "utf-8");
+// const convertedBack = uStr.toString();
+//
+//
+// console.log(uStr.length, str);
+// console.log(convertedBack)
+	//
+	//
+	// const strObj = '{"name": "Jeff", "dob": "12/2/2002"}' 
+	// const jsonStr = JSON.stringify({name: "Jeff", dob: "12/2/2002"});
+	// const parsed = JSON.parse(strObj); 
+	// console.log(parsed);
+	// console.log(jsonStr); 
+
+
+//
+// 	const obj = {};
+// 	const els = [1,2,3,4]
+//
+//
+// 	console.log(obj)
+//
+//
+// const MAGIC = 0x8008;
+//
+// const buf = Buffer.alloc(2);
+// buf.writeUint16BE(MAGIC);
+// console.log(buf);
+//
+//
+// const hex = 0x02;
+// const num = 2;
+//
+// if(num === hex) console.log("true");
+//
+
+
+function test(magic, payload={}){
+	return [magic, JSON.stringify(payload)];
+}
+const magic = 2;
+const pay = {num1: 2, num2: 1};
+console.log(test(magic, pay))
+
+
+const arr = [{name: "steve"},{name: "mike"},{name: "jon"},{name: "jones"}, {age: 20}]
+
+
+function nameExport(arr){
+	return arr.reduce((arr, el) => {
+		if(el.name) arr.push(el.name);
+		return arr;
+	},[])
 }
 
-function getAllDirs(dir){
-    const entries = fs.readdirSync(dir, { encoding: 'utf8', withFileTypes: true });
-    const dirs = [];
-
-    for(const entry of entries){
-        if(entry.isDirectory()){
-            const fullPath = path.join(dir, entry.name);
-            dirs.push(fullPath);
-            const nested = getAllDirs(fullPath);
-            dirs.push(...nested);
-        }
-    }
-
-    return `${dirs}`;
-}
 
 
-(async function writeDir(){
-    const dir = await createDir();
-    try{
-        await fs.promises.writeFile(path.join(dir, 'test.txt'), getAllDirs(dir));
-    }catch(err){
-        throw new Error(err.message);
-    }finally{
-        console.log(`Attempt to write file in ${dir} is complete.`);
-    }
-})()
+console.log(nameExport(arr));
 
 
 
 
-
-
-
-const arr = [{id:1,  name: "Joe"},{id:2,  name: "Smith"},{id:3,  name: "Thomas"},{id: 4, name: "Steve"}];
-
-const users = arr.map(usr =>  usr.id)
-
-
-console.log(users);
->>>>>>> 4518af3f22323565f5324a2040401cf00ffe9abb
